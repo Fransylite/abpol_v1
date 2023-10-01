@@ -9,13 +9,13 @@
         <meta name="description" content="Abia State Polytechnic is a citadel of academic excellence. We are committed to quality education aimed at empowering and improving lives which make positive, lasting impact in society">
         <meta name="arthur" content="Francis Otia, francisotia1995@gmail.com">
         <title>Interactive Web Map of Abia State Polytechnic, Aba</title>
-	<meta name="keywords" content="Abia State Polytechnic Aba, Abia Poly, Aba, Abia state, best polytechnic, nigeria polytechnic, polytechnic, best polytechnic in nigeria, best polytechnic in westafrica ">
+	<meta name="keywords" content="Abia State Polytechnic Aba, Abia Poly, Aba, Abia state, best polytechnic, nigeria polytechnic, polytechnic, best polytechnic in nigeria, best polytechnic in westafrica, interractive web map, 3D Model, DTM">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
-        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css"> <link rel="stylesheet" href="css/qgis2web.css">
         <script src="js/jquery-3.7.1.js"></script>
         <style>
        
@@ -23,7 +23,40 @@
         <title></title>
     </head>
     <body>
-        <div class="wrapper">
+         <!-- Burger menu start-->
+         <nav class="burger-menu">
+            <ul>
+                <li><a href="index.html" target="_blank">WEB-MAP</a></li>
+                <li><a href="3d_main/abia-poly-3d.html" target="_blank">3D-MODEL</a></li>
+                <li><a href="https://abiastatepolytechnic.edu.ng" target="_blank">ABIA-POLY-HOME-PAGE</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+        <!-- Burger menu stop-->
+
+
+
+    <!-- The header (top) of our website -->
+    <header class="header-main">
+        <div class="header-main-logo">
+            <img src="images/logoapoly.png" alt="abpol logo">
+            <nav class="header-main-nav">
+                <ul>
+                    <li><a href="index.html" target="_blank">WEB-MAP</a></li>
+                    <li><a href="3d_main/abia-poly-3d.html" target="_blank">3D-MODEL</a></li>
+                    <li><a href="https://abiastatepolytechnic.edu.ng" target="_blank">ABIA-POLY-HOME-PAGE</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="header-main-sm">
+            <a href="https://www.facebook.com/francisfransylite.otia" target="_blank"><div class ="header-main-sm-fb"></div></a>
+            <a href="https://www.linkedin.com/in/francis-otia-8652bb181" target="_blank"><div class ="header-main-sm-ln"></div></a>
+            <div class="burger-menu-btn"></div>
+        </div>
+    </header>
+
        <div class="main"> 
         <div class="main-left">
             <div id="title"><h2>INTERACTIVE WEB MAP OF ABIA STATE POLYTECHNIC, ABA, NIGERIA</h2></div>
@@ -57,11 +90,13 @@
         <div class="main-right">
             <div id="description">
                 <h2>MAP USER GUIDE</h2>
-                <p>The Map has layers legend at the top right corner.</p>
+                <p>The Map has layer's legend at the top right corner.</p>
                 <p>You may toggle on/off different layers by clicking on them from the legend's drop down menu.</p>
                 <p>If you are particularly interested in visualizing the Digital Terrain (DTM), Simply toggle the rest of the layers off (Except the DTM itself) to enjoy the visuals of the DTM alone.</p>
                 <P>Note that by default, all the layers are turned on.</P>
-                <p>The items at the left corner have their functions. The plus and minus icons for zoom in and zoom out respectively, the measure icon enables you to take measurements on the map, the location icon to geolocate the user, the search icon searches through google map and can take you off away from the map and last icon there enables you to search items from the buildings layer only.</p>
+                <p>The items at the left corner have their functions. The plus and minus icons for zoom in and zoom out respectively, the measure icon enables you to take measurements on the map, the location icon to geolocate the user, the search icon searches through google map and can take you off away from the map and the last icon there enables you to search items from the buildings layer only which is a nice way to return to the map when you have zoomed off from the map e.g. you may type in ch (church) then click on the catholic church option that appears there and it will zoom you down to the Catholic Church which is inside the institution.</p>
+                <p>You may also wish to visit the institution's official website, if so then, the link is provided at the header above (or by opening the toggle menu for the mobile version).</p>
+                <p>A link to visualize the 3D Model is available above.</p>
             </div>
         </div>
        </div>
@@ -73,8 +108,8 @@
         <p>Capture: </p>
         <div id="captureCoordinatesDiv">
             <p id="captureCoordinates">Click on the map</p>
-        </div> 
+        </div>
+        <div id="attrib"></div> 
     </div>
-</div>
     </body>
 </html>
