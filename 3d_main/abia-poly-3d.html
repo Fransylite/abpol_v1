@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model of Abia State Polytechnic, Aba, Nigeria.</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="Abia State Polytechnic Aba, Abia Poly, Aba, Abia state, best polytechnic, nigeria polytechnic, polytechnic, best polytechnic in nigeria, best polytechnic in westafrica, interractive web map, 3D Model, DTM">
+<base target="_blank">
+<link rel="stylesheet" type="text/css" href="./Qgis2threejs.css">
+<link rel="stylesheet" type="text/css" href="./css/legend4.css">
+
+<style type="text/css">
+#popup, #header, #layerpanel {
+  left: 36px;
+}
+</style>
+<script src="./threejs/three.min.js"></script>
+<script src="./threejs/OrbitControls.js"></script>
+<script src="./threejs/ViewHelper.js"></script>
+<script src="./Qgis2threejs.js"></script>
+<link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="css/abia-poly-3d.css">
+</head>
+
+<body>
+    <header>
+        <h1>3D MODEL OF ABIA STATE POLYTECHNIC, ABA, NIGERIA</h1>
+        <div class="toggle-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html" target="_blank">WEB-MAP</a></li>
+            <li><a href="3d_main/abia-poly-3d.html" target="_blank">3D-MODEL</a></li>
+            <li><a href="https://abiastatepolytechnic.edu.ng" target="_blank">ABIA-POLY-HOME-PAGE</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div id="map-container">
+        <div id="view">
+            <div id="northarrow"></div>
+            <div id="navigation"></div>
+          </div>
+          
+          <!-- popup -->
+          <div id="popup">
+            <div id="closebtn">&times;</div>
+            <div id="popupbar"></div>
+            <div id="popupbody">
+              <div id="popupcontent"></div>
+          
+              <!-- query result -->
+              <div id="queryresult">
+                <table id="qr_coords_table">
+                  <caption>Clicked coordinates <div id="zoomtopoint" class="action-zoom zoombtn"></div></caption>
+                  <tr><td id="qr_coords"></td></tr>
+                </table>
+          
+                <table id="qr_layername_table">
+                  <caption>Layer <div id="zoomtolayer" class="action-zoom zoombtn"></div></caption>
+                  <tr><td id="qr_layername"></td></tr>
+                </table>
+          
+                <table id="qr_attrs_table">
+                  <caption>Attributes</caption>
+                </table>
+          
+                <!-- camera actions and measure tool -->
+                <div id="orbitbtn" class="action-btn action-orbit">Orbit</div>
+                <div id="measurebtn" class="action-btn">Measure distance</div>
+              </div>
+          
+              <!-- page info -->
+              <div id="pageinfo">
+                <h1>Current View URL</h1>
+                <div><input id="urlbox" type="text"></div>
+                <h1>Usage</h1>
+                <table id="usage">
+                  <tr><td colspan="2" class="star">Mouse</td></tr>
+                  <tr><td>Left button + Move</td><td>Orbit</td></tr>
+                  <tr><td>Mouse Wheel</td><td>Zoom</td></tr>
+                  <tr><td>Right button + Move</td><td>Pan</td></tr>
+          
+                  <tr><td colspan="2" class="star">Keys</td></tr>
+                  <tr><td>Arrow keys</td><td>Move Horizontally</td></tr>
+                  <tr><td>Shift + Arrow keys</td><td>Orbit</td></tr>
+                  <tr><td>Ctrl + Arrow keys</td><td>Rotate</td></tr>
+                  <tr><td>Shift + Ctrl + Up / Down</td><td>Zoom In / Out</td></tr>
+                  <tr><td>L</td><td>Toggle Label Visibility</td></tr>
+                  <tr><td>R</td><td>Start / Stop Orbit Animation</td></tr>
+                  <tr><td>W</td><td>Wireframe Mode</td></tr>
+                  <tr><td>Shift + R</td><td>Reset Camera Position</td></tr>
+                  <tr><td>Shift + S</td><td>Save Image</td></tr>
+                </table>
+          
+                <h1>About</h1>
+                <div id="about"><img src="./Qgis2threejs.png">
+                  This page was made with <a href="https://www.qgis.org/">QGIS</a> and <a href="https://github.com/minorua/Qgis2threejs">Qgis2threejs</a> plugin (version 2.7.1).
+                  <div>Powered by <a href="https://threejs.org/">three.js</a>
+                  <span id="lib_proj4js"> and <a href="https://trac.osgeo.org/proj4js/">Proj4js</a></span>.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- progress bar -->
+          <div id="progress"><div id="progressbar"></div></div>
+          
+          <!-- menu -->
+          <div id="toolbtns">
+            <div id="layerbtn"></div>
+            <div id="animbtn" class="hidden"></div>
+            <div id="infobtn"></div>
+          </div>
+          
+          <!-- footer -->
+          <div id="footer"><div style = "background-color:white;">
+            <div class="toggle-legend">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+          </div>
+          <div class="legend">
+            <h2>LEGEND</h2>
+            <div class="toggle-button" id="toggleButton">
+                Toggle Legend
+            </div>
+            <div class="legend-content">
+                <ul>
+                    <li class="dtm">
+                        <span class="label">DTM</span>
+                        <span class="upper-limit">87.49</span>
+                        <div class="gradient-box"></div>
+                        <span class="lower-limit">77.53</span>
+                    </li>
+                    <li class="buildings">
+                        <span class="label">Buildings</span>
+                        <ul>
+                            <li><span class="bungalow"></span> Bungalow</li>
+                            <li><span class="one-deck"></span> One Deck</li>
+                            <li><span class="two-deck"></span> Two Deck</li>
+                            <li><span class="three-deck"></span> Three Deck</li>
+                            <li><span class="gallery-deck"></span> Gallery Deck</li>
+                        </ul>
+                    </li>
+                    <li><span class="school-field"></span> School Field</li>
+                    <li><span class="basketball-court"></span> Basketball Court</li>
+                    <li><span class="volleyball-pitch"></span> Volleyball Pitch</li>
+                    <li><span class="flyover"></span> Flyover</li>
+                </ul>
+            </div>
+        </div>
+        <script src="js/legend4.js"></script>
+          </div> </br>
+          
+          <div style = "background-color:white;">
+          </div>
+          </div>
+          
+          <!-- layer panel -->
+          <div id="layerpanel">
+            <div id="layerlist"></div>
+          </div>
+          
+          <!-- animation -->
+          <div id="narrativebox" class="ef1">
+            <div id="narbody">
+          
+            </div>
+            <div id="nextbtn"></div>
+          </div>
+          
+          <script>
+          Q3D.Config.allVisible = true;
+          Q3D.Config.viewpoint = {lookAt:{x:318552.5868121944,y:567094.7195763773,z:-1.4625229771332768e-16},pos:{x:318558.81022986915,y:566659.5949881057,z:2996.6859589105}};
+          Q3D.Config.localMode = true;
+          
+          var container = document.getElementById("view"),
+              app = Q3D.application,
+              gui = Q3D.gui;
+          
+          app.init(container);       // initialize viewer
+          
+          // load the scene
+          app.loadSceneFile("./data/abpol_3d/scene.js", function (scene) {
+            // scene file has been loaded
+            app.start();
+          }, function (scene) {
+            // all relevant files have been loaded
+          
+          });
+          </script>
+    </div>
+
+    <script src="js/abia-poly-3d.js"></script>
+</body>
+
+</html>

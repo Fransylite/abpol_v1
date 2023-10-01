@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.legend {
+    max-width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: -20px;
+}
+
+.legend h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.toggle-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+.legend-content {
+    display: block;
+}
+
+.legend-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.legend-content li {
+    margin-bottom: 8px;
+}
+
+.legend .label {
+    font-weight: bold;
+}
+
+.legend span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.dtm .gradient-box {
+    width: 20px;
+    height: 40px;
+    background-image: linear-gradient(to bottom, #cc3333, #ff9966, #99cc99, #3399cc);
+    position: relative;
+    margin: 0 0 0 0;
+}
+
+.dtm .upper-limit,
+.dtm .lower-limit {
+    display: block;
+    text-align: center;
+}
+
+.buildings .bungalow {
+    background-color: #cc9933;
+}
+
+.buildings .one-deck {
+    background-color: #cc6666;
+}
+
+.buildings .two-deck {
+    background-color: #cc33cc;
+}
+
+.buildings .three-deck {
+    background-color: #66cccc;
+}
+
+.buildings .gallery-deck {
+    background-color: #6666cc;
+}
+
+.school-field {
+    background-color: #006600;
+}
+
+.basketball-court {
+    background-color: #cccc00;
+}
+
+.volleyball-pitch {
+    background-color: #cc9966;
+}
+
+.flyover {
+    background-color: #cccc00;
+}
+
+.toggle-button {
+    display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .legend-content {
+        display: none;
+    }
+
+    .toggle-button {
+        display: block;
+    }
+
+    .toggle-button.active + .legend-content {
+        display: block;
+    }
+}
