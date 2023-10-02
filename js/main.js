@@ -17,16 +17,22 @@ var highlightLayer;
         var crs = new L.Proj.CRS('EPSG:32632', '+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs', {
             resolutions: [2800, 1400, 700, 350, 175, 84, 42, 21, 11.2, 5.6, 2.8, 1.4, 0.7, 0.35, 0.14, 0.07],
         });
-        var map = L.map('map', {center: [5.1284, 7.3626], zoom: 17}, {
+        var map = L.map('map', {center: [5.128581, 7.36281], zoom: 20}, {
             crs: crs,
             continuousWorld: false,
-            worldCopyJump: false, 
+            worldCopyJump: false,
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[5.125837848112332,7.357483231001971],[5.131609423389984,7.370063433123861]]);
         var hash = new L.Hash(map);
+        
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+
+
+        
+
+
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
@@ -45,14 +51,61 @@ var highlightLayer;
         map.createPane('pane_googlemaps_0');
         map.getPane('pane_googlemaps_0').style.zIndex = 400;
 
-        var layer_googlemaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', {
+        var layer_googlemaps_0 = L.tileLayer('', {
             pane: 'pane_googlemaps_0',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
-            maxNativeZoom: 18
+            maxNativeZoom: 18,
+        }).addTo(map);
+        
+        var google_maps_customed = L.tileLayer('https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', {
+            maxZoom: 28,
+            zoom: 20
+        }).addTo(map);
+        
+
+        var open_street_map = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 28,
+            zoom: 20
+        }).addTo(map);
+
+       
+
+        open_street_map;
+        map.addLayer(open_street_map);
+
+        google_maps_customed;
+        map.addLayer(google_maps_customed);
+
+
+
+        // Add geolocation control with circle
+        L.control.locate({
+            drawCircle: true,
+            circleStyle: {
+                fillColor: '#136AEC',
+                color: '#136AEC',
+                opacity: 0.4,
+                fillOpacity: 0.4,
+                weight: 1,
+                clickable: false,
+                zIndex: 1000  // Set the desired z-index value for the circle 
+            },
+            markerStyle: {
+                fillColor: '#136AEC',
+                color: '#fff',
+                opacity: 1,
+                fillOpacity: 1,
+                weight: 2,
+                iconSize: [10, 10],
+                clickable: false
+            },
+            locateOptions: {
+                maxZoom: 19
+            }
         }).addTo(map);
         
         layer_googlemaps_0;
@@ -735,7 +788,7 @@ var highlightLayer;
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<strong>LEGEND</strong><br>Buildings<br /><table><tr><td style="text-align: center;"><img src="legend/Buildings_9_Bungalow0.png" /></td><td>Bungalow</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_GaleryDeck1.png" /></td><td>Galery_Deck</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_OneDeck2.png" /></td><td>One_Deck</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_ThreeDeck4.png" /></td><td>Three_Deck</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_TwoDeck5.png" /></td><td>Two_Deck</td></tr><tr><td></td></tr></table>': layer_Buildings_9,'<img src="legend/Roads_8.png" /> Roads': layer_Roads_8,'Field_Court_Pitch<br /><table><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_BasketballCourt0.png" /></td><td>Basketball_Court</td></tr><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_SchoolField1.png" /></td><td>School_Field</td></tr><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_VolleyBallPitch2.png" /></td><td>VolleyBall_Pitch</td></tr><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_3.png" /></td><td></td></tr></table>': layer_Field_Court_Pitch_7,'<img src="legend/Gate_6.png" /> Gate': layer_Gate_6,'<img src="legend/Flyover_5.png" /> Flyover': layer_Flyover_5,'<img src="legend/Perimeter_4.png" /> Perimeter': layer_Perimeter_4,'<img src="legend/Contour_3.png" /> Contour': layer_Contour_3,'<img src="legend/Spot_Heights_2.png" /> Spot_Heights': layer_Spot_Heights_2,'<tr><td "style = text-align: center;">DTM</td><br><td "style = display:fit-content;">87.49</td><br><td style="text-align: center;"><img src="legend/DTM.png" /><td>77.53</td></td></tr>': layer_DTM_1,"google maps": layer_googlemaps_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<strong>LEGEND</strong><br>Buildings<br /><table><tr><td style="text-align: center;"><img src="legend/Buildings_9_Bungalow0.png" /></td><td>Bungalow</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_GaleryDeck1.png" /></td><td>Galery_Deck</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_OneDeck2.png" /></td><td>One_Deck</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_ThreeDeck4.png" /></td><td>Three_Deck</td></tr><tr><td style="text-align: center;"><img src="legend/Buildings_9_TwoDeck5.png" /></td><td>Two_Deck</td></tr><tr><td></td></tr></table>': layer_Buildings_9,'<img src="legend/Roads_8.png" /> Roads': layer_Roads_8,'Field_Court_Pitch<br /><table><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_BasketballCourt0.png" /></td><td>Basketball_Court</td></tr><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_SchoolField1.png" /></td><td>School_Field</td></tr><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_VolleyBallPitch2.png" /></td><td>VolleyBall_Pitch</td></tr><tr><td style="text-align: center;"><img src="legend/Field_Court_Pitch_7_3.png" /></td><td></td></tr></table>': layer_Field_Court_Pitch_7,'<img src="legend/Gate_6.png" /> Gate': layer_Gate_6,'<img src="legend/Flyover_5.png" /> Flyover': layer_Flyover_5,'<img src="legend/Perimeter_4.png" /> Perimeter': layer_Perimeter_4,'<img src="legend/Contour_3.png" /> Contour': layer_Contour_3,'<img src="legend/Spot_Heights_2.png" /> Spot_Heights': layer_Spot_Heights_2,'<tr><td "style = text-align: center;">DTM</td><br><td "style = display:fit-content;">87.49</td><br><td style="text-align: center;"><img src="legend/DTM.png" /><td>77.53</td></td></tr>': layer_DTM_1, "open street map": open_street_map, "google maps": google_maps_customed,}).addTo(map);
         setBounds();
         var i = 0;
         layer_Spot_Heights_2.eachLayer(function(layer) {
@@ -842,5 +895,24 @@ var highlightLayer;
         
         $("#map").on("mousemove", showCoordinates);
         $("#map").on("click", captureCoordinates);
-            
         
+
+        // Burger menu functions
+
+        let burgerBtn = document.querySelector(".burger-menu-btn");
+let burgerMenu = document.querySelector(".burger-menu");
+
+let isBurgerOpen = false;
+
+burgerBtn.onclick = function () {
+    if (!isBurgerOpen) {
+        burgerMenu.style.display = "block";
+        burgerBtn.style.backgroundPosition = "center left 50px, center";
+        isBurgerOpen = true;
+    } 
+    else if (isBurgerOpen) {
+        burgerMenu.style.display = "none";
+        burgerBtn.style.backgroundPosition = "center, center left 50px";
+        isBurgerOpen = false;
+    }
+}
