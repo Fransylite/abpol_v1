@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .toggle-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .author {
+            margin: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* Set a maximum height if needed */
+        }
+
+        @media screen and (max-width: 600px) {
+            .toggle-menu {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                text-align: center;
+            }
+
+            nav.active ul {
+                display: block;
+            }
+
+            nav li {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <title>Contact Page</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul class="tabs">
+        <li><a href="index.html">WEB-MAP</a></li>
+        <li><a href="3d_main/abia-poly-3d.html">3D-MODEL</a></li>
+        <li><a href="https://abiastatepolytechnic.edu.ng">ABIA-POLY-HOME-PAGE</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+      <div class="toggle-menu">&#9776;</div>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <h1>Contact Information</h1>
+    
+    <div class="contact-info">
+      <div class="author">
+        <img src="images/njike_c.jpg" alt="Author 1">
+        <h2>Surv. Dr. Chigbu Njike (MNIS) </h2>
+        <p>Registered Surveyor, Deputy Rector (Admin), Director of Physical Planning</p>
+        <p>Abia State Polytechnic, Aba, Nigeria</p>
+        <p>Aba, Nigeria</p>
+        <p>+234 803 342 3624</p>
+        <p>Email: njikec@gmail.com</p>
+      </div>
+      
+      <div class="author">
+        <img src="images/otia_f.jpg" alt="Author 2">
+        <h2>Mr. Francis Richard Otia</h2>
+        <p>HND in Surveying and Geoinformatics</p>
+        <p>Abia State Polytechnic, Aba, Nigeria</p>
+        <p>Aba, Nigeria</p>
+        <p>+234 816 196 5054</p>
+        <p>Email: Francisotia1995@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleMenu = document.querySelector('.toggle-menu');
+      const nav = document.querySelector('nav');
+
+      toggleMenu.addEventListener('click', function () {
+        nav.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
